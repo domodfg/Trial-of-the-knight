@@ -11,15 +11,34 @@
       function getRandom() {
        return parseInt(Math.floor(Math.random() * 3));
       }
-      function computerPlay(getRandom) {
-        if (getRandom () === 0) {
-            return computerSelection = 'rock';
-        } else if (getRandom () === 1) {
-            return computerSelection = 'paper';
+     
+      function computerPlay(compChoice) {
+        if (compChoice === 0) {
+            return 'ROCK';
+        } else if (compChoice === 1) {
+            return 'PAPER';
         } else {
-            return computerSelection = 'scissor';
+            return 'SCISSOR';
         }
       }
+      let compChoice = getRandom();
+      let computerSelection = computerPlay(compChoice);
+      let playerInput = prompt('Rock Paper or Scissor');
+      let playerSelection = playerInput.toUpperCase();
+      function playRound(playerSelection , computerSelection) {
+        if (computerSelection === 'ROCK' && playerSelection === 'PAPER'){
+            return  'you win! paper beat rock!';
+        } else if (computerSelection === 'PAPER' && playerSelection === 'SCISSOR') {
+            return  'you win scissor beat paper!';
+        } else if (computerSelection === 'SCISSOR' && playerSelection === 'ROCK') {
+            return  'you win! rock beat scissor!';
+        } else if (computerSelection === playerSelection) {
+            return  'draw' ;
+        } else {
+            return  `you lose! ${computerSelection.toLowerCase()} beat ${playerSelection.toLowerCase()}`;
+        }
+      }
+
    </script> 
 </body>
 </html>
