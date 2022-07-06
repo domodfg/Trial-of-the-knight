@@ -73,12 +73,20 @@ function getRandom() {
   const attackbtn=document.querySelector('#attack');
   const magicbtn=document.querySelector('#magic');
   const parrybtn=document.querySelector('#parry');
+  const resetbtn=document.querySelector('#reset');
   const results=document.querySelector('.move');
   const tubaLife=document.querySelector('.tuba-life');
   const yourLife=document.querySelector('.your-life');
   attackbtn.addEventListener('click', setSelectionRock)
   magicbtn.addEventListener('click', setSelectionPaper)
   parrybtn.addEventListener('click', setSelectionScissor)
+  resetbtn.addEventListener('click', reset)
 
+  function reset() {
+    playerLife = 5;
+    computerLife = 5;
+    yourLife.textContent=`Your lifes: ${playerLife}`;
+    tubaLife.textContent=`knight's lifes: ${computerLife}`;
+  }
   
 
