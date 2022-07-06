@@ -15,51 +15,38 @@ function getRandom() {
   function playRound(playerSelection, computerSelection) {
     if (computerSelection === "ROCK" && playerSelection === "PAPER") {
       playerScore += 1;
-      return roundResult="you win! paper beat rock!";
+      roundResult="you win! paper beat rock!";
     } else if (
       computerSelection === "PAPER" &&
       playerSelection === "SCISSOR"
     ) {
       playerScore += 1;
-      return roundResult="you win! scissor beat paper!";
+      roundResult="you win! scissor beat paper!";
     } else if (
       computerSelection === "SCISSOR" &&
       playerSelection === "ROCK"
     ) {
       playerScore += 1;
-      return roundResult="you win! rock beat scissor!";
+      roundResult="you win! rock beat scissor!";
     } else if (computerSelection === playerSelection) {
-      return roundResult="draw";
+      roundResult="draw!";
     } else if (
       playerSelection !== "ROCK" &&
       playerSelection !== "SCISSOR" &&
       playerSelection !== "PAPER"
     ) {
-      return roundResult="please input rock/scissor/paper";
+      roundResult="please input rock/scissor/paper";
     } else {
       computerScore += 1;
-      return roundResult=`you lose! ${computerSelection.toLowerCase()} beat ${playerSelection.toLowerCase()}!`;
+      roundResult=`you lose! ${computerSelection.toLowerCase()} beat ${playerSelection.toLowerCase()}!`;
     }
+    results.textContent=roundResult;
+    container.appendChild(results);
   }
 
   let playerScore = 0;
   let computerScore = 0;
   let roundResult;
-
-  function game() {
-    for (let i = 0; i < 5; i++) {
-      
-
-      console.log(roundResult)
-      if (i === 4 && playerScore > computerScore) {
-        console.log(`You Win! ${playerScore} vs ${computerScore}`);
-      } else if (i === 4 && playerScore < computerScore) {
-        console.log(`You Lose! ${playerScore} vs ${computerScore}`);
-      } else if (i === 4 && playerScore === computerScore) {
-        console.log(`Draw! ${playerScore} vs ${computerScore}`);
-      }
-    }
-  }
 
   function setSelectionRock() {
     let playerSelection = 'ROCK';
@@ -88,3 +75,6 @@ function getRandom() {
   attackbtn.addEventListener('click', setSelectionRock)
   magicbtn.addEventListener('click', setSelectionPaper)
   parrybtn.addEventListener('click', setSelectionScissor)
+  const results=document.querySelector('.move');
+  const container=document.querySelector('.score')
+
