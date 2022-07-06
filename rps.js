@@ -41,20 +41,15 @@ function getRandom() {
       return roundResult=`you lose! ${computerSelection.toLowerCase()} beat ${playerSelection.toLowerCase()}!`;
     }
   }
+
   let playerScore = 0;
   let computerScore = 0;
   let roundResult;
 
   function game() {
     for (let i = 0; i < 5; i++) {
-      let compChoice = getRandom();
-      let computerSelection = computerPlay(compChoice);
-      let playerInput = prompt("Rock Paper or Scissor");
-      if (playerInput === null) {
-        return "please input rock/scissor/paper";
-      }
-      let playerSelection = playerInput.toUpperCase();
-      playRound(playerSelection, computerSelection);
+      
+
       console.log(roundResult)
       if (i === 4 && playerScore > computerScore) {
         console.log(`You Win! ${playerScore} vs ${computerScore}`);
@@ -63,7 +58,33 @@ function getRandom() {
       } else if (i === 4 && playerScore === computerScore) {
         console.log(`Draw! ${playerScore} vs ${computerScore}`);
       }
-      console.log(`Player score : ${playerScore}`);
-      console.log(`Computer Score : ${computerScore}`);
     }
   }
+
+  function setSelectionRock() {
+    let playerSelection = 'ROCK';
+    let compChoice = getRandom();
+    let computerSelection = computerPlay(compChoice);
+    playRound(playerSelection, computerSelection);
+  }
+
+  function setSelectionPaper() {
+    let playerSelection = 'PAPER';
+    let compChoice = getRandom();
+    let computerSelection = computerPlay(compChoice);
+    playRound(playerSelection, computerSelection);
+  }
+
+  function setSelectionScissor() {
+    let playerSelection = 'SCISSOR';
+    let compChoice = getRandom();
+    let computerSelection = computerPlay(compChoice);
+    playRound(playerSelection, computerSelection);
+  }
+
+  const attackbtn=document.querySelector('#attack');
+  const magicbtn=document.querySelector('#magic');
+  const parrybtn=document.querySelector('#parry');
+  attackbtn.addEventListener('click', setSelectionRock)
+  magicbtn.addEventListener('click', setSelectionPaper)
+  parrybtn.addEventListener('click', setSelectionScissor)

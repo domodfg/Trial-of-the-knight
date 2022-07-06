@@ -41,3 +41,8 @@ h1 {
     border: white 10px ridge;
     border-radius: 30px;
 }
+
+button {
+    border-radius: 30px;
+    padding: 0;
+}
