@@ -14,38 +14,39 @@ function getRandom() {
 
   function playRound(playerSelection, computerSelection) {
     if (computerSelection === "ROCK" && playerSelection === "PAPER") {
-      playerScore += 1;
+      computerLife -= 1;
       roundResult="you win! paper beat rock!";
     } else if (
       computerSelection === "PAPER" &&
       playerSelection === "SCISSOR"
     ) {
-      playerScore += 1;
+      computerLife -= 1;
       roundResult="you win! scissor beat paper!";
     } else if (
       computerSelection === "SCISSOR" &&
       playerSelection === "ROCK"
     ) {
-      playerScore += 1;
+      computerLife -= 1;
       roundResult="you win! rock beat scissor!";
     } else if (computerSelection === playerSelection) {
       roundResult="draw!";
-    } else if (
-      playerSelection !== "ROCK" &&
-      playerSelection !== "SCISSOR" &&
-      playerSelection !== "PAPER"
-    ) {
-      roundResult="please input rock/scissor/paper";
     } else {
-      computerScore += 1;
+      playerLife -= 1;
       roundResult=`you lose! ${computerSelection.toLowerCase()} beat ${playerSelection.toLowerCase()}!`;
     }
     results.textContent=roundResult;
-    container.appendChild(results);
+    yourLife.textContent=`Your lifes: ${playerLife}`;
+    tubaLife.textContent=`knight's lifes: ${computerLife}`;
+    if (playerLife === 0) {
+      yourLife.textContent='YOU DIED';
+    } 
+    if (computerLife === 0) {
+      tubaLife.textContent='VICTORY ACHIEVED';
+    }
   }
 
-  let playerScore = 0;
-  let computerScore = 0;
+  let playerLife = 5;
+  let computerLife = 5;
   let roundResult;
 
   function setSelectionRock() {
@@ -72,9 +73,12 @@ function getRandom() {
   const attackbtn=document.querySelector('#attack');
   const magicbtn=document.querySelector('#magic');
   const parrybtn=document.querySelector('#parry');
+  const results=document.querySelector('.move');
+  const tubaLife=document.querySelector('.tuba-life');
+  const yourLife=document.querySelector('.your-life');
   attackbtn.addEventListener('click', setSelectionRock)
   magicbtn.addEventListener('click', setSelectionPaper)
   parrybtn.addEventListener('click', setSelectionScissor)
-  const results=document.querySelector('.move');
-  const container=document.querySelector('.score')
+
+  
 
